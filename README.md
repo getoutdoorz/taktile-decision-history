@@ -9,7 +9,7 @@ This repository is an example of how to update Taktile code nodes via the Decisi
 ## Key Files
 - `code-nodes/` directory: Contains Python files representing code nodes (e.g., `Summarize.py`, `Multiply.py`)
 - A Python script `patchNodes.py` that patches Taktile code nodes.
-- `.github/workflows/patch-code-nodes.yml`: A GitHub Actions workflow configuration that triggers the patching process.
+- `.github/workflows/main.yml`: A GitHub Actions workflow configuration that triggers the patching process.
 
 ## Requirements
 - Python 3.9+

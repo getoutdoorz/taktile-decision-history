@@ -1,0 +1,40 @@
+name: Process Code Node Patching
+
+on:
+  push:
+    branches: [ main ]  # Runs on an update to main
+
+jobs:
+  patch-code-nodes:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.9'
+        cache: 'pip'
+    
+    - name: Install dependencies (for API requests)
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests
+
+    - name: Detect changed Python files in code-nodes/
+      id: python-changes
+      uses: tj-actions/changed-files@v46.0.5
+      with:
+        files: 'code-nodes/*.py'
+
+    - name: Print changed files
+      run: |
+        echo "Changed Python files:"
+        echo "${{ steps.python-changes.outputs.all_changed_files }}"
+
+    - name: Run patchNodes.py if Python files changed
+      if: steps.python-changes.outputs.any_changed == 'true'
+      env:
+        API_KEY: ${{ secrets.API_KEY }}
+      run: |
+        python patchNodes.py ${{ steps.python-changes.outputs.all_changed_files }}
