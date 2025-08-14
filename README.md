@@ -18,13 +18,13 @@ This repository is an example of how to update Taktile code nodes via the Decisi
 
 ## Usage
 1. Create a new branch off of `main` and checkout to that branch.
-2. Update the organization name for API calls within `patchNodes.py`.
-3. Make changes to the Python files in the `code-nodes/` directory.
-4. Commit your changes and push the branch to GitHub.
-5. Create a pull request to merge your changes into `main`.
-6. Once the pull request is merged, the GitHub Actions workflow will automatically run.
+1. Update the organization name for API calls within `patchNodes.py`.
+1. Make changes to the Python files in the `code-nodes/` directory.
+1. Commit your changes and push the branch to GitHub.
+1. Create a pull request to merge your changes into `main`.
+1. Once the pull request is merged, the GitHub Actions workflow will automatically run.
     1. The workflow will automatically run and patch any matching Taktile code nodes.
-    2.All output and API responses are visible in the GitHub Actions log.
+    1. All output and API responses are visible in the GitHub Actions log.
 
 ## Security
 - Your API key is stored securely as a GitHub secret and never exposed in logs.
